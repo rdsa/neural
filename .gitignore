@@ -1,0 +1,7 @@
+*.jpg
+*.jpeg
+*.jpe
+*.png
+checkpoint
+CarsVSMotorcycles*
+!CarsVSMotorcycles.meta
