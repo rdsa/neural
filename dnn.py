@@ -60,11 +60,11 @@ def preprocess_testing_data():
         original_images.append(cv2.imread(path, 1))
     return testing_data, original_images
 
-########## Leitura das imagens para treinamento:##########
+########## Leitura das imagens para treinamento ##########
 # Para usar novas imagens:
-training_data = preprocess_training_data()
+#training_data = preprocess_training_data()
 # Para carregar imagens utilizadas anteriormente:
-#training_data = np.load('training_data.npy')
+training_data = np.load('training_data.npy')
 
 tf.reset_default_graph()
 
@@ -94,13 +94,13 @@ network = regression(network, optimizer='momentum',\
 
 model = tflearn.DNN(network)
 
-if os.path.exists('{}.meta'.format(MODEL_NAME)):
+path = "./" + MODEL_NAME + ".meta"
+if os.path.exists(path):
     model.load(MODEL_NAME)
     print('Model loaded')
 
-#################### Parte do treinamento: ####################
+#################### Parte do treinamento ####################
 '''
-# Separa uma parte do dataset de treinamento para validação dos resultados
 train = training_data
 
 X = np.array([i[0] for i in train]).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
